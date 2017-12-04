@@ -1,1 +1,1 @@
-this is <?=$title?> <br>
+<h1><?=$title?> </h1>
