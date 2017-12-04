@@ -1,1 +1,1 @@
-this is home<br>
+<h1><?= $title ?></h1>
