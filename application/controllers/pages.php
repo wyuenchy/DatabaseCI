@@ -64,7 +64,7 @@ class Pages extends CI_Controller{
     $sql_query = $this->db->query($query);
     $data["session"] = $sql_query;
 
-    $query_organizer="SELECT organizer_name"
+    $query_organizer="SELECT organizer_name,organizer_ID"
     ." FROM session_organizer"
     ." NATURAL JOIN session"
     ." NATURAL JOIN organizer"
@@ -74,7 +74,7 @@ class Pages extends CI_Controller{
     $sql_query_org = $this->db->query($query_organizer);
     $data["org"] = $sql_query_org;
 
-    $query_trainer="SELECT trainer_name"
+    $query_trainer="SELECT trainer_name,trainer_ID"
     ." FROM session_trainer"
     ." NATURAL JOIN session"
     ." NATURAL JOIN trainer"
@@ -87,6 +87,38 @@ class Pages extends CI_Controller{
     $this->load->view('/template/header');
     $this->load->view('/template/nav');
     $this->load->view('/pages/details',$data);
+    $this->load->view('/template/footer');
+  }
+  public function trainer(){
+    $this->load->database();
+    $query="SELECT *"
+    ." FROM trainer"
+    ." where trainer_ID='"
+    .$this->uri->segment(3)
+    ."'";
+    $sql_query = $this->db->query($query);
+    $data["trainer"] = $sql_query;
+
+    $query_session="SELECT DISTINCT session_title,date,venue_name,DATE_FORMAT(start_time, '%H:%i')as'time',no_of_tickets,level,session_ID,category "
+    ."FROM organizer"
+    ." NATURAL JOIN session"
+    ." NATURAL JOIN trainer"
+    ." NATURAL JOIN venue"
+    ." NATURAL JOIN session_organizer"
+    ." NATURAL JOIN session_trainer"
+    ." NATURAL JOIN session_venue"
+    ." NATURAL JOIN sport_cat"
+    ." WHERE sport_cat=cat_id"
+    ." AND trainer_ID='"
+    .$this->uri->segment(3)
+    ."'";
+
+    $sql_query_session = $this->db->query($query_session);
+    $data["session"] = $sql_query_session;
+
+    $this->load->view('/template/header');
+    $this->load->view('/template/nav');
+    $this->load->view('/pages/trainer',$data);
     $this->load->view('/template/footer');
   }
 }
