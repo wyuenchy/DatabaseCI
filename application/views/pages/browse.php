@@ -1,3 +1,4 @@
+<h1>Browse Session</h1>
 <table class="table table-striped table-hover ">
   <thead>
     <tr>
@@ -9,6 +10,7 @@
       <th>time</th>
       <th>Capacity</th>
       <th>Level</th>
+      <th>Booking</th>
     </tr>
   </thead>
   <tbody>
@@ -26,16 +28,40 @@
       <td>12:00~13:50</td>
       <td>20</td>
       <td>1</td>
+      <td><a href='#'>Here</a></td>
     </tr>
     <tr>
       <td>2</td>
       <td>Mary</td>
       <td>Sad Inc.</td>
       <td>2017-12-20</td>
-      <td>Shrung Wan</td>
+      <td>Sheung Wan</td>
       <td>15:00~16:50</td>
       <td>25</td>
       <td>3</td>
+      <td><a href='#'>Here</a></td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>Tim</td>
+      <td>Crying Fitness.</td>
+      <td>2017-12-02</td>
+      <td>Tsuen Wan</td>
+      <td>11:00~12:50</td>
+      <td>15</td>
+      <td>2</td>
+      <td><a href='#'>Here</a></td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td>Terry</td>
+      <td>Heinz Inc.</td>
+      <td>2017-12-27</td>
+      <td>Kowloon Bay</td>
+      <td>18:00~19:50</td>
+      <td>50</td>
+      <td>1</td>
+      <td><a href='#'>Here</a></td>
     </tr>
   </tbody>
 </table>
