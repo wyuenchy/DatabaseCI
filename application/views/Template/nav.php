@@ -6,10 +6,10 @@
         <div id="navbar">
           <ul class="nav navbar-nav">
             <li><a href="<?php echo base_url(); ?>">Home</a></li>
-            <li><a href="<?php echo base_url(); ?>about">About</a></li>
-            <li><a href="<?php echo base_url(); ?>/pages/browse">Browse</a></li>
-            <li><a href="<?php echo base_url(); ?>/pages/create">Create</a></li>
+            <li><a href="<?php echo base_url(); ?>pages/browse">Browse</a></li>
+            <li><a href="<?php echo base_url(); ?>pages/create">Create</a></li>
             <li><a href="#">Login</a></li>
+            <li><a href="<?php echo base_url(); ?>about">About</a></li>
           </ul>
           <form class="navbar-form navbar-right" role="search">
             <div class="form-group">
