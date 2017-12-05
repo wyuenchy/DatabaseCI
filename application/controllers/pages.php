@@ -121,5 +121,37 @@ class Pages extends CI_Controller{
     $this->load->view('/pages/trainer',$data);
     $this->load->view('/template/footer');
   }
+  public function org(){
+    $this->load->database();
+    $query="SELECT *"
+    ." FROM organizer"
+    ." where organizer_ID='"
+    .$this->uri->segment(3)
+    ."'";
+    $sql_query = $this->db->query($query);
+    $data["org"] = $sql_query;
+
+    $query_session="SELECT DISTINCT session_title,date,venue_name,DATE_FORMAT(start_time, '%H:%i')as'time',no_of_tickets,level,session_ID,category "
+    ."FROM organizer"
+    ." NATURAL JOIN session"
+    ." NATURAL JOIN trainer"
+    ." NATURAL JOIN venue"
+    ." NATURAL JOIN session_organizer"
+    ." NATURAL JOIN session_trainer"
+    ." NATURAL JOIN session_venue"
+    ." NATURAL JOIN sport_cat"
+    ." WHERE sport_cat=cat_id"
+    ." AND organizer_ID='"
+    .$this->uri->segment(3)
+    ."'";
+
+    $sql_query_session = $this->db->query($query_session);
+    $data["session"] = $sql_query_session;
+
+    $this->load->view('/template/header');
+    $this->load->view('/template/nav');
+    $this->load->view('/pages/org',$data);
+    $this->load->view('/template/footer');
+  }
 }
  ?>

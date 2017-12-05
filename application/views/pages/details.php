@@ -1,5 +1,5 @@
-<h1>Details Of the session</h1>
-<div class='container'><br><br>
+<h2>Details Of the session</h2>
+<div class='container'><br>
   <table>
 <?php
 foreach ($session->result() as $row) {

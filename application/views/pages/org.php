@@ -1,15 +1,15 @@
-<h2>Trainer Information</h2><br>
+<h2>Organizer Information</h2><br>
 <div class = container>
-<table>
+  <table>
   <?php
-  foreach($trainer->result() as $tra){
-    echo "<tr><td width='150px'>Trainer Name :</td><td>".$tra->trainer_name."</td></tr>";
-    echo "<tr><td width='150px'>Trainer Description :</td><td>".$tra->trainer_description."</td></tr>";
-    echo "<tr><td width='150px'>Trainer Curriculum :</td><td>".$tra->trainer_curriculum."</td></tr>";
+  foreach($org->result() as $temp){
+    echo "<tr><td width ='160px'>Organizer Name:</td><td>".$temp->organizer_name."</td></tr>";
+    echo "<tr><td width ='160px'>&nbsp</td><td>&nbsp</td></tr>";
+    echo "<tr><td width ='160px'>Organizer Description:</td><td>".$temp->organizer_description."</td></tr>";
   }
    ?>
  </table><br>
- <h3>Session trainer take part in: </h3>
+ <h3>Session organizer held: </h3>
 <table class="table table-striped table-hover ">
   <thead>
     <tr>
