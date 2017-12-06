@@ -57,7 +57,7 @@ class Pages extends CI_Controller{
   }
   public function details(){
     $this->load->database();
-    $query="SELECT DISTINCT DATE_FORMAT(TIMEDIFF(start_time, end_time), '%H')-20 as'duration',session_ID,session_title,date,venue_name,DATE_FORMAT(start_time, '%H:%i')as'time',no_of_tickets,ticket_available,level,session_ID,category,ticket_price"
+    $query="SELECT DISTINCT DATE_FORMAT(TIMEDIFF(start_time, end_time), '%H')-20 as'duration',session_ID,session_title,session_photo,date,venue_name,DATE_FORMAT(start_time, '%H:%i')as'time',no_of_tickets,ticket_available,level,session_ID,category,ticket_price"
     // session_title,trainer_name,organizer_name,date,venue_name,time,no_of_tickets,level,session_ID
     ." FROM organizer"
     ." NATURAL JOIN session"

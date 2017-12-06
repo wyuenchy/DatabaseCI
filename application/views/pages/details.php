@@ -1,9 +1,10 @@
 <h2>Details Of the session</h2>
 <div class='container'><br>
-  <table>
+
 <?php
 foreach ($session->result() as $row) {
-  echo "<tr><td width ='200px'>".img('images/1.jpg')."</td></tr>";
+  echo "<img src='".base_url()."/images/".$row->session_photo.".jpg' width='400px'><br><br>";
+  echo "<table>";
   echo "<tr><td width ='200px'>Session ID:</td><td>".$row->session_ID."</td></tr>";
   echo "<tr><td width ='200px'>Session Name: </td><td>".$row->session_title."</td></tr>";
   echo "<tr><td width ='200px'>Organizer Name: </td><td>";
@@ -23,7 +24,7 @@ foreach ($session->result() as $row) {
   }
   echo "</td></tr>";
   echo "<tr><td width ='200px'>Category:</td><td>".$row->category."</td></tr>";
-  echo "</table>";
+  echo "</table><br>";
   if($row->ticket_available=="0"){
     echo "<a href='#' class='btn btn-default btn-lg'>Ticket Unavailable</a>";
   }else{
