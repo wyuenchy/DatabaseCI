@@ -277,7 +277,7 @@ class Pages extends CI_Controller{
   }
   public function success(){
     $this->load->database();
-    $query="INSERT INTO user_book (book_ID, user_ID)"
+    $query="INSERT INTO user_book (session_ID, user_ID)"
     ."VALUES ('"
     .$this->uri->segment(3)
     ."','"
@@ -385,6 +385,31 @@ class Pages extends CI_Controller{
     $this->load->view('/pages/edituser', $data);
     $this->load->view('/template/footer');
 
+  }
+  public function check(){
+    $this->load->database();
+    $query="SELECT DISTINCT DATE_FORMAT(TIMEDIFF(start_time, end_time), '%H')-20 as'duration',session_title,date,venue_name,DATE_FORMAT(start_time, '%H:%i')as'time',no_of_tickets,level,session_ID,category,ticket_price "
+    ."FROM organizer"
+    ." NATURAL JOIN session"
+    ." NATURAL JOIN trainer"
+    ." NATURAL JOIN venue"
+    ." NATURAL JOIN session_organizer"
+    ." NATURAL JOIN session_trainer"
+    ." NATURAL JOIN session_venue"
+    ." NATURAL JOIN sport_cat"
+    ." NATURAL JOIN user_book"
+    ." WHERE sport_cat=cat_id"
+    ." AND user_ID='"
+    .$this->uri->segment(3)
+    ."'";
+
+		$sql_query = $this->db->query($query);
+		$data["session"] = $sql_query;
+
+    $this->load->view('/template/header');
+    $this->load->view('/template/nav');
+    $this->load->view('/pages/check',$data);
+    $this->load->view('/template/footer');
   }
 }
  ?>
