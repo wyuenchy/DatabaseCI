@@ -1,12 +1,10 @@
 <h1>Welcome To the Reservation System</h1>
+<?php echo "<img src='".base_url()."images/banner.jpg' width='100%'>"; ?>
 <h3>Feature Session</h3>
 <table class="table table-striped table-hover ">
   <thead>
     <tr>
-      <!-- <th>#</th> -->
       <th>Title</th>
-      <!-- <th>Trainer</th>
-      <th>Organizer</th> -->
       <th>Date</th>
       <th>Venue</th>
       <th>Time</th>
@@ -22,8 +20,6 @@
     foreach ($session->result() as $row) {
       echo"<tr>";
       echo"<td>".$row->session_title."</td>";
-      // echo"<td>".$row->trainer_name."</td>";
-      // echo"<td>".$row->organizer_name."</td>";
       echo"<td>".$row->date."</td>";
       echo"<td>".$row->venue_name."</td>";
       echo"<td>".$row->time."</td>";

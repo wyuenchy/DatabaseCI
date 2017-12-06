@@ -3,8 +3,6 @@
   <thead>
     <tr>
       <th>Title</th>
-      <!-- <th>Trainer</th>
-      <th>Organizer</th> -->
       <th>Date</th>
       <th>Venue</th>
       <th>Time</th>
@@ -20,8 +18,6 @@
     foreach ($session->result() as $row) {
       echo"<tr>";
       echo"<td>".$row->session_title."</td>";
-      // echo"<td>".$row->trainer_name."</td>";
-      // echo"<td>".$row->organizer_name."</td>";
       echo"<td>".$row->date."</td>";
       echo"<td>".$row->venue_name."</td>";
       echo"<td>".$row->time."</td>";
