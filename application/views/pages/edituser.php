@@ -117,9 +117,6 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                          ?>
                        </br></br>
           <button type="submit" class="btn btn-primary">Submit</button>
-
-
-<?php echo $_SESSION['user_ID']; ?>
         </form>
     </div>
 <?php
