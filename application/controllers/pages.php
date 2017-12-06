@@ -284,6 +284,10 @@ class Pages extends CI_Controller{
     .$this->uri->segment(4)
     ."');";
     $sql_query = $this->db->query($query);
+    $query_update="UPDATE session SET ticket_available=ticket_available-1 WHERE session_ID='"
+    .$this->uri->segment(3)
+    ."'";
+    $sql_query_update = $this->db->query($query_update);
     $this->load->view('/template/header');
     $this->load->view('/template/nav');
     $this->load->view('/pages/success');
