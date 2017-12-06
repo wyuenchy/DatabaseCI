@@ -5,8 +5,8 @@
 foreach ($session->result() as $row) {
   echo "<img src='".base_url()."/images/".$row->session_photo.".jpg' width='400px'><br><br>";
   echo "<table>";
-  echo "<tr><td width ='200px'>Session ID:</td><td>".$row->session_ID."</td></tr>";
   echo "<tr><td width ='200px'>Session Name: </td><td>".$row->session_title."</td></tr>";
+  echo "<tr><td width ='200px'>Description: </td><td>".$row->long_description."</td></tr>";
   echo "<tr><td width ='200px'>Organizer Name: </td><td>";
   foreach($org->result() as $organizer){
     echo "<a href='".base_url()."pages/org/".$organizer->organizer_ID."'>".$organizer->organizer_name."&nbsp&nbsp</a>";
