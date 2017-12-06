@@ -214,12 +214,13 @@ class Pages extends CI_Controller{
        ."NATURAL JOIN organizer "
        ."NATURAL JOIN trainer ";
 
-      if(!empty($keywordC)){
-        $query .= "WHERE session_title LIKE '%". $keywordC . "%'";
-        $query .= "OR long_description LIKE '%". $keywordC . "%'";
-        $query .= "OR  trainer_name LIKE '%". $keywordC . "%'";
-        $query .= "OR organizer_name LIKE '%". $keywordC . "%'";
-      }
+       if(!empty($keywordC)){
+           $query .= "WHERE session_title LIKE '%". $keywordC . "%'";
+           $query .= "OR long_description LIKE '%". $keywordC . "%'";
+           $query .= "OR  trainer_name LIKE '%". $keywordC . "%'";
+           $query .= "OR organizer_name LIKE '%". $keywordC . "%'";
+         }
+         $query.= " ORDER BY date,time";
 
 
     $sql_query = $this->db->query($query);
