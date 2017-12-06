@@ -14,13 +14,21 @@ foreach ($session->result() as $row) {
   echo "<tr><td width ='200px'>Session Venue: </td><td>".$row->venue_name."</td></tr>";
   echo "<tr><td width ='200px'>Session Start Time:</td><td>".$row->time."</td></tr>";
   echo "<tr><td width ='200px'>Session Duration(in Hour):</td><td>".$row->duration."</td></tr>";
+  echo "<tr><td width ='200px'>Ticket Available:</td><td>".$row->ticket_available."</td></tr>";
   echo "<tr><td width ='200px'>Ticket Price:</td><td>$".$row->ticket_price."</td></tr>";
   echo "<tr><td width ='200px'>Trainer Name:</td><td>";
   foreach($trainer->result() as $tra){
     echo "<a href='".base_url()."pages/trainer/".$tra->trainer_ID."'>".$tra->trainer_name."&nbsp&nbsp</a>";
   }
   echo "</td></tr>";
-  echo "<tr><td width ='200px'>Category:</td><td>".$row->category."</td></tr>";}
+  echo "<tr><td width ='200px'>Category:</td><td>".$row->category."</td></tr>";
+  echo "</table>";
+  if($row->ticket_available=="0"){
+    echo "<a href='#' class='btn btn-default btn-lg'>Ticket Unavailable</a>";
+  }else{
+    echo "<a href='#' class='btn btn-primary btn-lg'>Get Ticket</a>";
+    }
+}
  ?>
-</table>
+<br>
 </div>
