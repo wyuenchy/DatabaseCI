@@ -202,7 +202,6 @@ class Pages extends CI_Controller{
     $this->load->view('/pages/price',$data);
     $this->load->view('/template/footer');
   }
-
   public function search(){
     $this->load->database();
 
@@ -232,6 +231,160 @@ class Pages extends CI_Controller{
 
     $this->load->view('/pages/search',$data);
     $this->load->view('/template/footer');
+  }
+  public function ticket(){
+    $this->load->database();
+    $query="SELECT DISTINCT DATE_FORMAT(TIMEDIFF(start_time, end_time), '%H')-20 as'duration',session_ID,long_description,session_title,session_photo,date,venue_name,DATE_FORMAT(start_time, '%H:%i')as'time',no_of_tickets,ticket_available,level,session_ID,category,ticket_price"
+    ." FROM organizer"
+    ." NATURAL JOIN session"
+    ." NATURAL JOIN trainer"
+    ." NATURAL JOIN venue"
+    ." NATURAL JOIN session_organizer"
+    ." NATURAL JOIN session_trainer"
+    ." NATURAL JOIN session_venue"
+    ." NATURAL JOIN sport_cat"
+    ." WHERE sport_cat=cat_id"
+    ." AND session_ID='"
+    .$this->uri->segment(3)
+    ."'";
+    $sql_query = $this->db->query($query);
+    $data["session"] = $sql_query;
+
+    $query_organizer="SELECT organizer_name,organizer_ID"
+    ." FROM session_organizer"
+    ." NATURAL JOIN session"
+    ." NATURAL JOIN organizer"
+    ." WHERE session_ID='"
+    .$this->uri->segment(3)
+    ."'";
+    $sql_query_org = $this->db->query($query_organizer);
+    $data["org"] = $sql_query_org;
+
+    $query_trainer="SELECT trainer_name,trainer_ID"
+    ." FROM session_trainer"
+    ." NATURAL JOIN session"
+    ." NATURAL JOIN trainer"
+    ." WHERE session_ID='"
+    .$this->uri->segment(3)
+    ."'";
+    $sql_query_trainer = $this->db->query($query_trainer);
+    $data["trainer"] = $sql_query_trainer;
+
+    $this->load->view('/template/header');
+    $this->load->view('/template/nav');
+    $this->load->view('/pages/ticket',$data);
+    $this->load->view('/template/footer');
+  }
+  public function success(){
+    $this->load->database();
+    $query="INSERT INTO user_book (book_ID, user_ID)"
+    ."VALUES ('"
+    .$this->uri->segment(3)
+    ."','"
+    .$this->uri->segment(4)
+    ."');";
+    $sql_query = $this->db->query($query);
+    $this->load->view('/template/header');
+    $this->load->view('/template/nav');
+    $this->load->view('/pages/success');
+    $this->load->view('/template/footer');
+  }
+  public function user(){
+    $this->load->database();
+    $sql_query = $this->db->query('SELECT * FROM user');
+    $data["user_login"] = $sql_query;
+
+    $this->load->database();
+
+    $sql_string = 'SELECT * FROM user';
+    //echo "<br /><b>SQL COMMAND:</b> " . $sql_string;
+    $sql_query = $this->db->query($sql_string);
+    $data["query_user"] = $sql_query;
+    $sql_string = "SELECT * FROM user";
+    //echo "<br /><b>SQL COMMAND:</b> " . $sql_string;
+
+    $sql_query = $this->db->query($sql_string);
+
+    $data["query_userdata"] = $sql_query;
+
+    $this->load->view('/template/header');
+    $this->load->view('/template/nav');
+    $this->load->view('/pages/user', $data);
+    $this->load->view('/template/footer');
+
+  }
+  public function login(){
+    $this->load->database();
+    $sql_query = $this->db->query('SELECT * FROM user');
+    $data["user_login"] = $sql_query;
+
+    $this->load->database();
+
+    $sql_string = 'SELECT * FROM user';
+    //echo "<br /><b>SQL COMMAND:</b> " . $sql_string;
+    $sql_query = $this->db->query($sql_string);
+    $data["query_user"] = $sql_query;
+    $sql_string = "SELECT * FROM user";
+    //echo "<br /><b>SQL COMMAND:</b> " . $sql_string;
+
+    $sql_query = $this->db->query($sql_string);
+
+    $data["query_userdata"] = $sql_query;
+
+    $this->load->view('/template/header');
+    $this->load->view('/template/nav');
+    $this->load->view('/pages/login', $data);
+    $this->load->view('/template/footer');
+
+  }
+  public function register(){
+    $this->load->helper('url');
+    $this->load->database();
+    $sql_query = $this->db->query('SELECT * FROM user');
+    $data["user_login"] = $sql_query;
+    $sql_string = "SELECT * FROM user";
+    //echo "<br /><b>SQL COMMAND:</b> " . $sql_string;
+
+    $sql_query = $this->db->query($sql_string);
+
+    $data["query_userdata"] = $sql_query;
+
+    $this->load->view('/template/header');
+    $this->load->view('/template/nav');
+    $this->load->view('/pages/register', $data);
+    $this->load->view('/template/footer');
+
+
+  }
+  public function logout(){
+    $this->load->database();
+    $sql_query = $this->db->query('SELECT * FROM user');
+    $data["user_login"] = $sql_query;
+    $sql_string = "SELECT * FROM user";
+    //echo "<br /><b>SQL COMMAND:</b> " . $sql_string;
+
+    $sql_query = $this->db->query($sql_string);
+
+    $data["query_userdata"] = $sql_query;
+
+    $this->load->view('/template/header');
+    $this->load->view('/template/nav');
+    $this->load->view('/pages/logout', $data);
+    $this->load->view('/template/footer');
+
+  }
+  public function edituser(){
+    $this->load->database();
+    $sql_query = $this->db->query('SELECT * FROM user');
+
+
+    $data["query_userdata"] = $sql_query;
+
+    $this->load->view('/template/header');
+    $this->load->view('/template/nav');
+    $this->load->view('/pages/edituser', $data);
+    $this->load->view('/template/footer');
+
   }
 }
  ?>

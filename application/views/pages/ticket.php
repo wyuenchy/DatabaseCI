@@ -1,9 +1,7 @@
-<h2>Details Of the session</h2>
-<div class='container'><br>
-
+<h2>You are currently booking:</h2><br>
+<?php session_start(); ?>
 <?php
 foreach ($session->result() as $row) {
-  echo "<img src='".base_url()."/images/".$row->session_photo.".jpg' width='400px'><br><br>";
   echo "<table>";
   echo "<tr><td width ='200px'>Session Name: </td><td>".$row->session_title."</td></tr>";
   echo "<tr><td width ='200px'>Description: </td><td>".$row->long_description."</td></tr>";
@@ -25,34 +23,9 @@ foreach ($session->result() as $row) {
   echo "</td></tr>";
   echo "<tr><td width ='200px'>Category:</td><td>".$row->category."</td></tr>";
   echo "</table><br>";
-  if($row->ticket_available=="0"){
-    echo "<a href='#' class='btn btn-default btn-lg'>Ticket Unavailable</a>";
-  }else{
-    echo "<a href='".base_url()."pages/ticket/".$row->session_ID."' class='btn btn-primary btn-lg'>Get Ticket</a>";
-    }
+}
+$ID = $_SESSION['user_ID'];
+foreach ($session->result() as $row) {
+  echo"<a href='".base_url()."pages/success/".$row->session_ID."/".$ID."' class='btn btn-primary btn-lg'>Confirm Booking</a>";
 }
  ?>
-<br><br><br><br><br>
-<form class="form-horizontal">
-  <fieldset>
-    <h2>Booking a session</h2>
-    <br>
-    <div class="form-group">
-      <label for="inputEmail" class="col-lg-2 control-label" >Ticket Available</label>
-      <div class="col-lg-10">
-        <p><?php
-          foreach($session->result() as $row){
-            echo "$row->ticket_available";
-          }
-        ?></p>
-      </div>
-    </div>
-    <div class="form-group">
-      <div class="col-lg-10 col-lg-offset-2">
-        <button type="reset" class="btn btn-default">Cancel</button>
-        <button type="submit" class="btn btn-primary">Submit</button>
-      </div>
-    </div>
-  </fieldset>
-</form>
-</div>
