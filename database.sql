@@ -1,25 +1,17 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.0
+-- version 4.7.3
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Dec 06, 2017 at 02:14 PM
--- Server version: 10.1.26-MariaDB
+-- Host: localhost:8889
+-- Generation Time: Dec 06, 2017 at 04:24 PM
+-- Server version: 5.6.35
 -- PHP Version: 7.1.8
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
-START TRANSACTION;
 SET time_zone = "+00:00";
 
-
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
-
 --
--- Database: `project`
+-- Database: `Sport_System`
 --
 
 -- --------------------------------------------------------
@@ -294,7 +286,7 @@ INSERT INTO `user` (`user_ID`, `username`, `password`, `is_admin`, `email`, `pho
 --
 
 CREATE TABLE `user_book` (
-  `book_ID` int(10) NOT NULL,
+  `session_ID` int(10) NOT NULL,
   `user_ID` int(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -302,12 +294,8 @@ CREATE TABLE `user_book` (
 -- Dumping data for table `user_book`
 --
 
-INSERT INTO `user_book` (`book_ID`, `user_ID`) VALUES
-(601, 501),
-(602, 502),
-(603, 501),
-(604, 501),
-(605, 502);
+INSERT INTO `user_book` (`session_ID`, `user_ID`) VALUES
+(102, 501);
 
 -- --------------------------------------------------------
 
@@ -411,8 +399,4 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `venue`
 --
 ALTER TABLE `venue`
-  MODIFY `venue_ID` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=410;COMMIT;
-
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+  MODIFY `venue_ID` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=410;
