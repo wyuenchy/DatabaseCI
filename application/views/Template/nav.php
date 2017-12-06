@@ -11,12 +11,17 @@
             <li><a href="#">Login</a></li>
             <li><a href="<?php echo base_url(); ?>about">About</a></li>
           </ul>
-          <form class="navbar-form navbar-right" role="search">
+
+
+
+
+          <form class="navbar-form navbar-right" role="search" action="<?php echo base_url(); ?>pages/search" method="get">
             <div class="form-group">
-              <input type="text" class="form-control" placeholder="Search">
+              <input type="text" class="form-control" name="keyword" placeholder="Search" value="<?php $keyword;?>">
             </div>
             <button type="submit" class="btn btn-default">Search</button>
-    </form>
+          </form>
+
         </div>
       </div>
     </nav>
