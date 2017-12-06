@@ -22,6 +22,7 @@
       <th>Duration(in Hours)</th>
       <th>Capacity</th>
       <th>Level</th>
+      <th>Price</th>
       <th>Details</th>
     </tr>
   </thead>
@@ -38,6 +39,7 @@
       echo"<td>".$row->duration."</td>";
       echo"<td>".$row->no_of_tickets."</td>";
       echo"<td>".$row->level."</td>";
+      echo"<td>$".$row->ticket_price."</td>";
       echo"<td><a href='".base_url()."pages/details/".$row->session_ID."'>Here</a></td>";
       echo"</tr>";
     }
