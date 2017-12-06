@@ -32,27 +32,3 @@ foreach ($session->result() as $row) {
     }
 }
  ?>
-<br><br><br><br><br>
-<form class="form-horizontal">
-  <fieldset>
-    <h2>Booking a session</h2>
-    <br>
-    <div class="form-group">
-      <label for="inputEmail" class="col-lg-2 control-label" >Ticket Available</label>
-      <div class="col-lg-10">
-        <p><?php
-          foreach($session->result() as $row){
-            echo "$row->ticket_available";
-          }
-        ?></p>
-      </div>
-    </div>
-    <div class="form-group">
-      <div class="col-lg-10 col-lg-offset-2">
-        <button type="reset" class="btn btn-default">Cancel</button>
-        <button type="submit" class="btn btn-primary">Submit</button>
-      </div>
-    </div>
-  </fieldset>
-</form>
-</div>
