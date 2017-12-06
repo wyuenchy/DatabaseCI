@@ -3,6 +3,7 @@
   <table>
 <?php
 foreach ($session->result() as $row) {
+  echo "<tr><td width ='200px'>".img('images/1.jpg')."</td></tr>";
   echo "<tr><td width ='200px'>Session ID:</td><td>".$row->session_ID."</td></tr>";
   echo "<tr><td width ='200px'>Session Name: </td><td>".$row->session_title."</td></tr>";
   echo "<tr><td width ='200px'>Organizer Name: </td><td>";
